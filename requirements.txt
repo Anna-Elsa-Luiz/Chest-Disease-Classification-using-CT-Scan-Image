@@ -1,0 +1,19 @@
+tensorflow==2.12.0
+pandas 
+gdown #if you want to download anything form gdrive
+dvc  #mlop
+mlflow==2.2.2 #mlop
+notebook
+numpy
+matplotlib
+seaborn
+python-box==6.0.2 #Used for exception
+pyYAML  #managing yaml 
+tqdm    # simple and convenient way to add progress bars to loops and iterable objects.
+ensure==1.0.2 #
+joblib
+types-PyYAML
+scipy
+Flask
+Flask-Cors
+-e .  #
