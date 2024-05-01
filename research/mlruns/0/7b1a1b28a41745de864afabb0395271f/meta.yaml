@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/iNeuron_pvt_ltd/Main_Projects/DL/Chest_Cancer_classification/research/mlruns/0/7b1a1b28a41745de864afabb0395271f/artifacts
+end_time: 1714546281774
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7b1a1b28a41745de864afabb0395271f
+run_name: dapper-mule-599
+run_uuid: 7b1a1b28a41745de864afabb0395271f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714546276149
+status: 3
+tags: []
+user_id: hp

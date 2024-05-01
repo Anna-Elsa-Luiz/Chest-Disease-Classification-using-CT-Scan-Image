@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/iNeuron_pvt_ltd/Main_Projects/DL/Chest_Cancer_classification/research/mlruns/0/4c678730d1df45f3982ce3de551ade80/artifacts
+end_time: 1714546425887
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4c678730d1df45f3982ce3de551ade80
+run_name: inquisitive-hare-308
+run_uuid: 4c678730d1df45f3982ce3de551ade80
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714546420556
+status: 3
+tags: []
+user_id: hp
