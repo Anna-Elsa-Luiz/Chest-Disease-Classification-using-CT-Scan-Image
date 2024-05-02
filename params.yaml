@@ -2,7 +2,7 @@ AUGMENTATION: True
 IMAGE_SIZE: [224, 224, 3] # as per VGG 16 model , 3:RGB
 BATCH_SIZE: 16 #as per you machine config
 INCLUDE_TOP: False # because we are not going to use the dense layer instead we are going to drop it
-EPOCHS: 1
+EPOCHS: 2
 CLASSES: 2 # 2 classes : normal and diseased
 WEIGHTS: imagenet
 LEARNING_RATE: 0.01 #default learning rate
