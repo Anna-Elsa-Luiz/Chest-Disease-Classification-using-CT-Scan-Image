@@ -5,6 +5,7 @@ import tensorflow as tf
 import time
 from cnnClassifier.entity.config_entity import TrainingConfig
 from pathlib import Path
+import shutil
 
 class Training:
     def __init__(self, config: TrainingConfig):
@@ -64,6 +65,8 @@ class Training:
     @staticmethod
     def save_model(path: Path, model: tf.keras.Model):
         model.save(path)
+        
+
 
 
 
