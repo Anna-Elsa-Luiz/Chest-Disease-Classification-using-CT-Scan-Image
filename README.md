@@ -87,3 +87,44 @@ export MLFLOW_TRACKING_PASSWORD=------63a547cee2bfa163992db880d6b571b70
 </ul>
 
 <p>Thus instead of performing hyperparameter tuning on DL model (which is costly and time-taking task), we could simply compare and obtain the best model from MLflow - DagsHub.</p>
+
+
+
+<h2>Components</h2>
+<h3>Data Ingestion</h3>
+<ul>
+  <li>Upload the data in the drive and download it using gdown</li>
+  <li>Now in config → config.yaml: code</li>
+  <li>Create a data ingestion file in the research folder</li>
+  <li>Now update the entity: which is the return type of the function → create config_entity.py</li>
+  <li>Update the config → configuration.py</li>
+  <li>Now the component → create a file: data_ingestion.py</li>
+  <li>Now update the pipeline</li>
+  <li>Update the endpoint → main.py</li>
+  <li>Update the utils → common.py</li>
+</ul>
+
+
+<h3>Create a base model</h3>
+<ul>
+  <li>Update the config.yaml file: prepare_base_model</li>
+  <li>Params.yaml</li>
+  <li>Update the preparebasemodel.ipynb</li>
+  <li>Entity → config entity</li>
+  <li>Then update the config → configuration manager</li>
+  <li>Components → create a file prepare_base_model.py</li>
+  <li>Update the pipeline</li>
+  <li>Then the endpoint: main.py</li>
+</ul>
+
+
+
+<h3>Model Trainer</h3>
+<ul>
+  <li>Create a file modeltrainer.ipynb and update it</li>
+  <li>Entity → configentity.py</li>
+  <li>Config → configuration.py</li>
+  <li>Components → create a file: modeltrainer.py</li>
+  <li>Update the pipeline</li>
+  <li>Then the endpoint: main.py</li>
+</ul>
