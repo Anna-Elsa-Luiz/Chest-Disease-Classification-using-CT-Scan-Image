@@ -128,3 +128,276 @@ export MLFLOW_TRACKING_PASSWORD=------63a547cee2bfa163992db880d6b571b70
   <li>Update the pipeline</li>
   <li>Then the endpoint: main.py</li>
 </ul>
+
+
+<h3>Model Evaluation using MLflow</h3>
+<ul>
+  <li>Config is not required here</li>
+  <li>Create an ipynb file model evaluation with MLflow</li>
+  <li>Connect the repo to DagsHub</li>
+  <li>Then MLflow tracking in bash</li>
+</ul>
+
+
+<p>In Jupyter Notebook:</p>
+<pre>
+os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/------/Chest-Disease-Classification-using-CT-Scan-Image.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"]="------"
+os.environ["MLFLOW_TRACKING_PASSWORD"]="------63a547cee2bfa163992db880d6b571b70”
+</pre>
+
+
+
+<ul>
+  <li>Update the entity</li>
+  <li>Config → configuration</li>
+  <li>Components → model evaluation</li>
+  <li>Pipeline</li>
+  <li>End point → main.py</li>
+</ul>
+
+
+
+
+<ul>
+  <li>Dvc.yaml → Update the file</li>
+  <li>Now execute the commands</li>
+  <li>Execute Dvc init (dvc folder has been created)</li>
+  <li>Execute DVC repro</li>
+  <li>In dvc.lock file → it has saved all the metadata</li>
+  <li>If you execute the dvc repro it will show:</li>
+</ul>
+<pre>
+Stage 'data_ingestion' didn't change, skipping
+Stage 'prepare_base_model' didn't change, skipping
+Stage 'training' didn't change, skipping
+Stage 'evaluation' didn't change, skipping
+Data and pipelines are up to date.
+</pre>
+
+
+
+<h2>Prediction pipeline</h2>
+<ul>
+  <li>Prediction.py file added</li>
+  <li>Create a folder → model → copy the model during training</li>
+  <li>Push the changes to GitHub</li>
+</ul>
+
+
+
+<h2>User App</h2>
+<ul>
+  <li>Create the index.html</li>
+  <li>And app.py using Flask</li>
+</ul>
+
+
+
+<h2>Deployment</h2>
+<ul>
+  <li>Create a Dockerfile</li>
+  <li>.dockerignore</li>
+  <li>Docker-compose.yml</li>
+  <li>Create a .jenkins folder → then inside that create a Jenkinsfile</li>
+  <li>Scripts → ec2_instance.sh, Jenkins.sh files created</li>
+</ul>
+
+
+
+<h2>Deployment</h2>
+<ul>
+  <li>Create a Dockerfile</li>
+  <li>.dockerignore</li>
+  <li>Docker-compose.yml</li>
+  <li>Create a .jenkins folder → then inside that create a Jenkinsfile</li>
+  <li>Scripts → ec2_instance.sh, Jenkins.sh files created</li>
+</ul>
+
+
+<h2>AWS</h2>
+<p>AWS login</p>
+<ul>
+  <li>Create IAM user:</li>
+  <li>IAM → User → Create user → User name: chest-user → Permission policy: Administrator access → Create user</li>
+</ul>
+
+
+
+<h2>Setup the security credential</h2>
+<p>Security credential → create access keys → command line interface → permission → create access keys: download as CSV</p>
+
+<p>Now we need to launch a Jenkins Server: here EC2</p>
+
+<ul>
+  <li>EC2 → Launch instance</li>
+  <li>Name: jenkin-machine → Ubuntu → Amazon Machine Image → Instance type: → Create key pair → Launch instance</li>
+  <li>Take the instance created → connect</li>
+</ul>
+
+
+
+<h3>Now we need to setup the Jenkins</h3>
+
+<pre>#!/bin/bash
+
+sudo apt update
+
+sudo apt install openjdk-8-jdk -y
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt-get update
+
+sudo apt-get install jenkins -y
+
+sudo systemctl start jenkins
+
+sudo systemctl enable jenkins
+
+sudo systemctl status jenkins
+
+## Installing Docker
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+sudo usermod -aG docker $USER
+
+sudo usermod -aG docker jenkins
+
+newgrp docker
+
+sudo apt install awscli -y
+
+sudo usermod -a -G docker jenkins
+
+## AWS configuration & restarts jenkins
+
+aws configure
+
+sudo systemctl restart jenkins
+
+## Now setup elastic IP on AWS
+
+## For getting the admin password for jenkins
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+</pre>
+
+
+
+<h2>Setting the Elastic IP</h2>
+<ul>
+  <li>Allocate Elastic IP address → keep it as default → allocate</li>
+  <li>Associate this elastic IP address → instance → select the instance → Associate</li>
+  <li>Select the instance → security → security groups → edit inbound rules → add rules → 8080 & 0.0.0.0/0</li>
+  <li>Copy the public IP and load in a new page → Jenkins will be running → administrator password: paste → continue</li>
+  <li>For administrator password: execute sudo cat /var/lib/jenkins/secrets/initialAdminPassword in EC2 terminal</li>
+  <li>Install suggested plugins → automatically installing required items → create First admin user</li>
+  <li>Username: , password: , full name: , email: → save and finish → obtain the URL for Jenkins → Log into Jenkins Server</li>
+</ul>
+
+<p>Now we have to set the secret variable in Jenkins server:</p>
+<ul>
+  <li>Manage Jenkins → credentials → system → global credentials → add credential → secret text → ECR_REPOSITORY:</li>
+</ul>
+
+
+
+<h2>Create an ECR repo in AWS</h2>
+<ul>
+  <li>AWS → ECR → create repo → private → name → create</li>
+  <li>Copy the URI → paste in the Jenkins server: ECR_REPOSITORY</li>
+</ul>
+
+<h2>Next secret variable:</h2>
+<ul>
+  <li>Secret text → Global → AWS_ACCOUNT_ID: copy the ID from AWS account</li>
+  <li>Secret text → Global → AWS_ACCESS_KEY_ID: copy from the downloaded CSV</li>
+  <li>Secret text → Global → AWS_SECRET_ACCESS_KEY: copy from the downloaded CSV</li>
+  <li>SSH Username with private key → Global → ssh_key → Enter directly → add → copy the PEM file</li>
+</ul>
+
+<p>Dashboard → Manage Jenkins → Plugins → Available plugins → SSH agents → install → install and restart → Again log into Jenkins server → verify whether the credentials are added</p>
+
+<p>Now create a pipeline:</p>
+<ul>
+  <li>New item → Pipeline name → Pipeline → okay → Pipeline script from SCM → SCM: Git → paste the repo URL → branch: main → path of Jenkinsfile → save</li>
+</ul>
+
+<p>Now we have to create another EC2 instance for the application:</p>
+<ul>
+  <li>EC2 → instance → Launch instance → Name: → Ubuntu → t2large → key value pair for the EC2 -1 → 32 GB → launch instance</li>
+</ul>
+
+
+<h2>Instance → Connect</h2>
+
+<pre>#!/bin/bash
+
+sudo apt update
+
+sudo apt-get update
+
+sudo apt upgrade -y
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+sudo usermod -aG docker $USER
+
+newgrp docker
+
+sudo apt install awscli -y
+
+## AWS configuration
+
+aws configure
+
+## Now setup elastic IP on AWS
+</pre>
+
+
+<p>Run it on the EC2-2 instance terminal</p>
+<pre>
+sudo apt update
+sudo apt-get update
+sudo apt upgrade -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+newgrp docker
+sudo apt install awscli -y
+
+## AWS configuration
+aws configure
+
+## Now setup elastic IP on AWS
+</pre>
+
+<p>Now create an Elastic IP for the EC2-2 instance:</p>
+<ul>
+  <li>Allocate Elastic IP address → allocate → Associate Elastic IP address → Associate for the EC2-2 instance</li>
+</ul>
+
+<p>Now open up the Jenkinsfile → change the public IP near the ssh_key from the EC2-2 instance</p>
+
+<p>Now create a folder .github → create another folder inside → workflows → create a file: main.yaml → copy the code</p>
+
+<p>Now in GitHub → settings → secrets and variables → actions → create new repository secret:</p>
+<ul>
+  <li>URL: Jenkins URL</li>
+  <li>USER: Jenkins username</li>
+  <li>TOKEN: Jenkins dashboard → profile → configure → API token → add new Token → Generate → copy the Token</li>
+  <li>JOB: job created in Jenkins: pipeline</li>
+</ul>
+
+<p>Now we can push the code into GitHub. GitHub repo will trigger the Jenkins Server. Manually Trigger the pipeline/workflow:</p>
+<ul>
+  <li>GitHub → actions → Trigger Jenkins Job → Run workflow → run workflow → workflow starts → and triggered the Jenkins server → Build has started in Jenkins Server → Build the images and push the image into ECR and execute the application</li>
+</ul>
