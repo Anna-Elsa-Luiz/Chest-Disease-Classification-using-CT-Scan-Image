@@ -47,7 +47,7 @@ This project aims to develop an AI model capable of classifying and diagnosing c
 
 
 
-
+## **Project Implementation**
 ------------------------------------------------
 
 <ul>
@@ -82,14 +82,14 @@ This project aims to develop an AI model capable of classifying and diagnosing c
 
 
 
-<h2>Mlflow  Experiment Tracking : </h2>
+<h2>Mlflow --> Experiment Tracking : </h2>
 
 Example :
 
 ElasticNet : parameters (alpha , L1 ) 
-                    0.7 , 0.9  exp 1 70%
-                    0.5 , 0.5  exp 280%
-                    0.4 , 0.6  exp 350%
+                    0.7 , 0.9 --> exp 1 :70%
+                    0.5 , 0.5 --> exp 2 :80%
+                    0.4 , 0.6 --> exp 3 :50%
 CSV Exp 1 , Exp 2 , Exp 3 
 
 
