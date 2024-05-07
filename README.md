@@ -1,6 +1,55 @@
 
 # **CHEST DISEASE CLASSIFICATION USING CT-SCAN**
 
+
+<h2>Overview</h2>
+<p>
+This project aims to develop an AI model capable of classifying and diagnosing chest cancer, with a specific focus on adenocarcinoma, the most prevalent form of lung cancer. Leveraging deep learning techniques, particularly Convolutional Neural Networks (CNNs), the model utilizes the pretrained VGG-16 architecture to analyze medical images for cancer detection. The primary objective is to assist healthcare professionals in achieving early and accurate diagnoses, ultimately leading to improved patient outcomes.
+</p>
+
+
+
+<h2>Model Architecture</h2>
+<p>The VGG-16 model is a deep convolutional neural network renowned for its effectiveness in image classification tasks. Pretrained on large-scale image datasets such as ImageNet, VGG-16 possesses a deep network architecture consisting of 16 layers, including convolutional layers with small 3x3 filters and max-pooling layers. By fine-tuning the pretrained VGG-16 model on chest cancer images, we aim to capitalize on its robust feature extraction capabilities for accurate cancer classification.</p>
+
+
+
+<h2>Usage</h2>
+<p>Healthcare professionals can utilize the developed AI model as a supplementary tool in chest cancer diagnosis. By inputting medical images into the pretrained VGG-16 model, clinicians can receive automated predictions regarding the presence of adenocarcinoma, facilitating timely intervention and treatment planning.</p>
+
+
+<h2>Benefits</h2>
+<ul>
+    <li>Early Detection: The AI model enables early detection of chest cancer, particularly adenocarcinoma, which is crucial for improving patient prognosis.</li>
+    <li>Accuracy: By leveraging deep learning techniques and pretrained models like VGG-16, the model achieves high levels of accuracy in cancer classification.</li>
+    <li>Efficiency: Automated classification of medical images streamlines the diagnostic process, allowing healthcare professionals to focus on patient care and treatment decisions.</li>
+</ul>
+
+
+
+
+<h2>MLOps Implemented</h2>
+<ul>
+    <li>MLFlow: Experiment Tracking</li>
+    <li>DVC/Data Version Control: Pipeline Tracking</li>
+</ul>
+
+
+
+<h2>Deployment</h2>
+<p>Using Jenkins and AWS EC2, ECR</p>
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------
+
 <ul>
   <li>Create an acc in local repo and connect it with the github</li>
   <li>Then create the READMe.md, .gitignore, LICENSE files</li>
