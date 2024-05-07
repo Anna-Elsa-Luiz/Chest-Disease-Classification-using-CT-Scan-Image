@@ -46,9 +46,9 @@ This project aims to develop an AI model capable of classifying and diagnosing c
 
 
 
-
-## **Project Implementation**
 ------------------------------------------------
+## **Project Implementation**
+
 
 <ul>
   <li>Create an acc in local repo and connect it with the github</li>
